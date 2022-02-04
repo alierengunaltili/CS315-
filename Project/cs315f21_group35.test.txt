@@ -1,0 +1,37 @@
+begin 
+main(){ 
+    bool isConnect = true;
+    callp->connectWifi(isConnect);
+    int droneX = 0; #initializer!#;
+    int heading = 0;
+    int altitude = 100;
+    int droneY = 0; 
+    Surface s = (surfaceWidth = 8, surfaceHeight = 8, sCenterX = 0, sCenterY = 0);
+    int k = callp->sgetCenterX();
+    int w = callp->sgetWidth();
+    int l = callp->sgetCenterY();
+    int h = callp->sgetHeight();
+    bool check = true;
+    callp->nozzleOnOff(check);
+    k = w / 2 + k;
+    l = h / 2 + l;
+    droneX = -1 * k;
+    droneY = -1 * l;
+    int j = 0;
+    altitude = altitude + 100;
+    callp->climbUp(altitude); 
+    for(int i in 0 -> w step + 1){
+        j = 0;
+        callp->moveRight(); #moveOneUnitRight!#;
+        while(j < h){
+            callp->moveForward(); #moveOneUnitForward!#;
+            j = j + 1;
+        }
+        heading = heading + 180;
+    }
+    int ground = 0;
+    callp->dropDown(ground);
+    callp->stopDrone();
+    raptout(a);
+}
+end

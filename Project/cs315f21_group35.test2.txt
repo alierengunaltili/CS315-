@@ -1,0 +1,56 @@
+begin
+
+function calc(int a, int b, int c){
+    a = 10; #onesideofthetriangle!#;
+    b = 10; #anotherside!#;
+    c = 16; #thirdsideoftrianglearea!#;
+    return c;
+}
+
+main(){
+    int droneX = 0; #xPositionOfdroneinitialized!#;
+    int droneY = 0; #yPositionOfdroneinitialized!#;
+    int baseLength;
+    int side1;
+    int side2;
+    int baseLength = call->calc(side1, side2, baseLength);
+    int altitude = 150; #changingPredefinedVariablesValue!#;
+    callp->climbUp(altitude);
+    int heightHelper = baseLength / 2;
+    int squareExp = 2; #expConstFormathPowFunct !#;
+    float squareRoot = 0.5;  #expConstFormathPowFunct !#;
+    int height = callp->mathPow(heightHelper, squareExp);
+    #hypotenuseCalcwithSquareingSide1!#;
+    if(side1 == side2){
+        int hypotenuse = callp->mathPow(side1, squareExp); 
+    }
+    else{
+        height = 10;
+    }
+    height = hypotenuse - height;
+    height = callp->mathPow(height, squareRoot);
+    int k = 0;
+    int heading = 90;
+    bool flag = true;
+    callp->connectWifi(flag);
+    callp->nozzleOnOff(flag);
+    for(int i in 0 -> height step + 1){
+        for(int j in 0 -> baseLength - k step + 1){
+            callp->moveRight();
+        }
+        if(k < baseLength){
+            k = k + 1;
+        }
+        callp->moveForward();
+    }
+    bool stopper = false;
+    callp->stopDrone();
+    callp->connectWifi(stopper);
+    if(heading == 0){
+        raptout("STOPPED");
+    }
+    else{
+        raptout("MOVING");
+    }
+}
+end
