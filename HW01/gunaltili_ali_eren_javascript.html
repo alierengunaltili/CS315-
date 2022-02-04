@@ -1,0 +1,131 @@
+<script>
+    const tmp = (arr) => {
+        for(let i = 0; i < 6; i++){
+            arr[i] = (i + 1) * 10;
+        }
+        return arr;
+    };
+    
+    //rectArr function. creating rect array 5*5 and initialize it.
+    const rectArr =(arr) => {
+        for(let i = 0; i < 5; i++){
+            arr[i] = new Array(5);
+        }
+    
+        for(let i = 0; i < 5; i++){
+            for(let j = 0; j < 5; j++){
+                arr[i][j] = (i + 1) * 10 + j; 
+            }
+        }
+        return arr;
+    }
+    
+    //ragged array initializer method
+    var ragArr = (arr) => {
+        for(let i = 4; i >= 0; i--){
+            arr[i] = new Array(i);
+        }
+    
+        for(let i = 0; i < 5; i++){
+            for(let k = 0; k <= i; k++){
+                arr[i][k] = (i + 1) * 10 + k;
+            }
+        }
+        return 0;
+    }
+    
+    let array = [1,2,3,4,5]; // directly initialized
+    let str = "abc"; 
+    console.log(array[1]);
+    //console.log(array[str]); // print undefined
+    //console.log(array[3.2]); // print undefined
+    //console.log(array[array.length]);
+    //let jmp = array[array.length]; // it prints []
+    
+    console.log("----------------------");
+    
+    let sparse = [15,25,35];
+    sparse[30] = 45; //dynamically increase the size but won't put anything between 3 to 30 indices.
+    
+    sparse.forEach((x, i) => console.log(x)); // printing with for each
+    
+    console.log("---------------");
+    let cars = ["volvo" , "bmw" , "audi" , "mercedes"];
+    let shallowCopy = cars.slice(); // slice function can be used in copying the array
+    
+    let twod = [ ['papa', true], ['mama', false] , ['turner', null, 13], [32, 56,4,78]];
+    //javascript doesn't support 2d arrays or ragged arrays natively.
+    //but you can build as in javascript arrays can hold objects. Arrays can hold another arrays in their
+    //indices thus it can be built as ragged array.
+    console.log("Two-D Array");
+    console.table(twod);
+    console.log("-----------");
+    twod[0][0] = 1; //change the first value
+    console.log("value at [0][0] be changed");
+    console.log("After value change Two-D Array");
+    console.log(twod)
+    
+    console.log("Copy of car array");
+    console.log(shallowCopy);
+    console.log("Car Array: ");
+    console.log(cars);
+    
+    let tworect = new Array(5);
+    console.log("Initial state of 2D array");
+    console.log(tworect); // print <5 empty items>
+    let newTmp = rectArr(tworect);//rectArr fills the inside of createdTwoD array.
+    
+    console.log("After filling up the 5x5 Array");
+    console.log(newTmp);
+    
+    let raggedArr = new Array(5);
+    ragArr(raggedArr);
+    console.log("----------Ragged Array---------------");
+    console.table(raggedArr);
+    
+    let rag_copy = raggedArr.slice(1, 3); //choosing the row with indices 1 and 2. 
+    console.log("Slice of the ragged array");
+    console.table(rag_copy);
+    
+    console.log("Taking another slice");
+    //taking slice from column of 2d array.To do that reach every row of the 2d array and then takes slice from them.
+    let rag_slice_column = new Array(raggedArr.length);
+    for(let i = 0; i < raggedArr.length; i++){
+        rag_slice_column[i] = raggedArr[i].slice(0,1);
+    }
+    console.table(rag_slice_column);
+    
+    console.log("-----------TwoD Without New Keyword --------");
+    let twoD_2 = [[1,2,3], [4,5,6], [7,8,9], [10,11,'old']];
+    console.table(twoD_2);
+    
+    console.log("-----------Ragged Without New Keyword--------");
+    let ragged_2 = [[1,2,3,4],[5,6], [true], ['a', 'b', 'c', 'd', 'e']];
+    console.table(ragged_2);
+    
+    let tmparr = [1,2,3,4,5,6];
+    console.log(tmparr);
+    let decimal = [[10,20,30,40,50,60], [1,2,3,4,5,6]];
+    tmparr[3] = 99;
+    console.log(tmparr);
+    
+    console.log("--------------------OPERATOR PART------------------------");
+    console.log(tmparr);
+    console.log(decimal);
+    let result = tmparr + decimal;
+    console.log("Sum of two arrays");
+    console.table(result);
+    let mult = tmparr * 10;
+    console.log("Multiplication with 10 of tmparr");
+    console.table(mult);
+    
+    console.log(result != tmparr);
+    console.log(result == tmparr);
+    let identical = [1,2,3,99,5,6];
+    let copy_ident = identical;
+    
+    console.log(copy_ident === identical); //prints true as they are identical === checks identical condition
+    console.log(identical > copy_ident); //print false as they are definitely the same. > checks the value of their address.
+    console.log("END");
+    </script>
+    
