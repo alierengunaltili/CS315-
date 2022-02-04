@@ -1,0 +1,73 @@
+console.log("Boolean Representation");
+var x = 0;
+var y = 'abc';
+var z = -15;
+console.log(x); //prints 0 
+console.log(Boolean(x)); // prints false 
+console.log(Boolean(y)); // prints true
+console.log(Boolean(z)); // prints true
+console.log(!x); // prints true
+console.log(!y); // prints false
+var bool = true;
+console.log(bool); // prints true
+console.log(!bool); //prints false
+console.log("-----------------");
+
+function fun(b){
+    if(b > 0){
+        console.log("in fun");
+        return "abc";
+    }
+}
+const foo = (b) => {
+    console.log("in foo");
+    return true;
+}
+
+console.log(true && true);
+console.log(false && fun(5)); // print false
+console.log(true && fun(5)); // print abc
+console.log(0 * foo(5)); // no short circuit evalution for multiplication operator
+console.log(0 && foo(5)); // won't print "in foo" as expected
+console.log("---" + !0 || fun(5)); //print --true (doesn't go fun function at all)
+console.log(0 || foo(5)); //goes into the foo function as left side of the logic or is not 1.
+console.log(1 && foo(5)); //goes into the foo function as left side of the logic and is not 0.
+console.log(1 || foo(5)); //won't go into the foo after finding 1
+console.log("" && foo(5)); // won't go into the foo after finding empty expression.
+console.log(null && foo(5)); //won't go to foo but prints null
+console.log("abc" || foo(5)); //won't go into the foo after finding nonempty expression.
+
+console.log("-----------------");
+console.log(foo(5) && fun(5)); // foo returns true. For logical and we go to rightside too.
+console.log(foo(5) || fun(5)); //foo returns true and we never visits after finding a nonempty value in or.
+console.log(fun(5) && foo(5)); //fun returns nonempty abc but in and exit condition is finding empty value.
+console.log(fun(5) || foo(5)); //fun returns nonempty abc and rightside is useless.
+console.log("------------!!!!!!--");
+console.log(0 || foo(5) || fun(5)); // 0 || don't cause short circuit. After seeing foo(5) it won't go inside of fun.
+console.log(1 && "abcd" || foo(5)); // 1 and && don't cause short circuit. But after seeing "abcd" and || cause short circuit.
+console.log(1 || "abcd" && 0); // see 1 and || operation then short circuit the expression. Prints 1.
+
+
+
+function pow(n){
+    var tmp = " ";
+    for(let i = 0; i < n; i++ ){
+        for(let j = 0; j < n; j++){
+            tmp += j;
+        }
+    }
+    return tmp;
+}
+
+//this function gives runtime error
+function error(p){
+    if(p > 0){
+        p++;
+        error(p);
+    }
+}
+console.log(true || error(2));
+//console.log(false || error(2));
+//shortcircuit advantages.
+console.log(false && pow(10));
+console.log(false || pow(10));
